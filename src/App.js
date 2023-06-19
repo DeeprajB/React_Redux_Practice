@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux';
-import { Inc, Dec } from './states/reducers/index';
+import { Action } from './states/reducers/index';
 
 
 function App() {
@@ -9,12 +9,11 @@ function App() {
   const dispatch = useDispatch()
   return (
     <>
-    <h1>React Redux Tutorial</h1>
+    <h1>React Redux</h1>
     <div style={{width: '100%', display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
       <h1>{curState}</h1>
       <div>
-        <button onClick={() => dispatch(Inc(10))}>Inc</button>
-        <button onClick={() => dispatch(Dec(5))}>Dec</button>
+        <button onClick={() => dispatch(Action(10))}>Do some Action</button>
       </div>
     </div>
     </>

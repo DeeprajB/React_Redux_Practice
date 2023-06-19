@@ -1,17 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const incdecSlice = createSlice({
-    name: 'incdec',
+export const newSlice = createSlice({
+    name: 'action',
     initialState: 10,
     reducers: {
-        Inc: (state,action) => {
-            return state += action.payload
+        Action: (state,action) => {
+            console.log("Access the state using "+state)
+            console.log("Perform action on state using "+action.payload)
+            return (
+                state += action.payload
+                )
         },
-        Dec: (state,action) => {
-            return state -= action.payload
-        }
     }
 })
 
-export const {Inc, Dec} = incdecSlice.actions
-export default incdecSlice.reducer;
+export const {Action} = newSlice.actions
+export default newSlice.reducer;
