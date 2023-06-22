@@ -2,6 +2,7 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import axios from 'axios';
+import {produce} from "immer";
 
 // Action Name Constants
 const getAllPostsPending = 'posts/getAll/pending'
@@ -39,11 +40,22 @@ function postsReducer(state = { posts: {} }, action) {
 function postByIDReducer(state = { post: {} }, action) {
     switch (action.type) {
       case getPostByIDPending:
-        return {...state, pending:true };
+        return produce(state, draftState => {
+            draftState.pending = true
+        });
+        // return {...state, pending:true };
       case getPostByIDFailed:
-          return {...state, error:action.error, pending:false  };
+        return produce(state, draftState => {
+            draftState.error = action.error
+            draftState.pending = false
+        })
+        //   return {...state, error:action.error, pending:false };
       case getPostByIDSuccess:
-              return { post: action.payload, pending: false };
+        return produce(state, draftState => {
+            draftState.post = action.payload
+            draftState.pending = false
+        })
+        // return { post: action.payload, pending: false };
       default:
         return state;
     }
@@ -100,6 +112,6 @@ function getAPostByIDPending(){
 
 // Funtion to run.
 setTimeout(() => {
-    store.dispatch(getAllPosts())
-    // store.dispatch(getPostByID(1));
+    // store.dispatch(getAllPosts())
+    store.dispatch(getPostByID(1));
   }, 2000);
