@@ -16,16 +16,16 @@ function Account() {
   return (
     <>
         <Box className="flex flex-col justify-center items-center my-5" sx={{
-        width: 1000,
+        width: '80vw',
         backgroundColor: '#E0B0FF',
         }}>
             <p className="pt-5 text-2xl font-semibold justify-center">Account Handler</p>
-            <div className="p-5 space-x-8">
+            <div className="flex p-5 space-x-4">
                 <ColorButton variant="contained">Increment +</ColorButton>
                 <ColorButton variant="contained">Decrement -</ColorButton>
             </div>
-            <div className="flex pb-5 space-x-8 items-center">
-                <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+            <div className="flex mb-5 space-x-4 items-center">
+                <TextField size="small" id="outlined-basic" label="Outlined" variant="outlined" />
                 <ColorButton variant="contained">Increment</ColorButton>
             </div>
         </Box>
