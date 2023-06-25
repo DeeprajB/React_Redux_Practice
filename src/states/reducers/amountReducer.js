@@ -4,12 +4,12 @@ export const amountSlice = createSlice({
     name: 'amount',
     initialState: 0,
     reducers: {
-        Increment: (state,action) => {
+        Increment: (state) => {
             return (
                 state += 1
                 )
         },
-        Decrement: (state,action) => {
+        Decrement: (state) => {
             return (
                 state -= 1
                 )
