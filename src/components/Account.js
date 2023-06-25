@@ -19,7 +19,7 @@ function Account() {
         width: '80vw',
         backgroundColor: '#E0B0FF',
         }}>
-            <p className="pt-5 text-2xl font-semibold justify-center">Account Handler</p>
+            <p className="pt-5 text-2xl font-semibold justify-center">Amount Handler</p>
             <div className="flex p-5 space-x-4">
                 <ColorButton variant="contained">Increment +</ColorButton>
                 <ColorButton variant="contained">Decrement -</ColorButton>
