@@ -13,19 +13,17 @@ function Home() {
             <div className="flex flex-row">
                 <Box className="flex flex-col justify-center items-center" sx={{
                 width: 500,
-                height: 300,
                 backgroundColor: '#e39ff6',
                 }}>
                     <p className="p-5 text-2xl text-black font-semibold">Current Amount</p>
-                    <p>NaN</p>
+                    <p className='pb-5'>NaN</p>
                 </Box>
                 <Box className="flex flex-col justify-center items-center" sx={{
                 width: 500,
-                height: 300,
                 backgroundColor: '#af69ef',
                 }}>
                     <p className="p-5 text-2xl text-white font-semibold">Total Bonus</p>
-                    <p>NaN</p>
+                    <p className='pb-5 text-white'>NaN</p>
                 </Box>
             </div>
             <Account />
