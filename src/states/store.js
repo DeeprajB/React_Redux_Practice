@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import newReducer from './reducers/index'
+import amountReducer from './reducers/amountReducer'
+import bonusReducer from './reducers/bonusReducer'
 
 export default configureStore({
     reducer:{
-        number: newReducer
+        amount: amountReducer,
+        bonus: bonusReducer
     }
 })
