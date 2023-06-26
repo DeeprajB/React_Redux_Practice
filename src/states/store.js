@@ -1,10 +1,14 @@
-import { configureStore } from '@reduxjs/toolkit'
-import amountReducer from './reducers/amountReducer'
-import bonusReducer from './reducers/bonusReducer'
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import logger from 'redux-logger';
+import thunk from 'redux-thunk';
 
-export default configureStore({
-    reducer:{
-        amount: amountReducer,
-        bonus: bonusReducer
-    }
-})
+import { postsReducer } from './reducers/postsReducer';
+import { postByIDReducer } from './reducers/postByIDReducer';
+
+export default createStore(
+    combineReducers({
+      allPosts: postsReducer,
+      postByID: postByIDReducer,
+    }),
+    applyMiddleware(logger, thunk)
+  );
