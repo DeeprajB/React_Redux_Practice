@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import amountReducer from './reducers/amountReducer'
-import bonusReducer from './reducers/bonusReducer'
+import postByIDReducer from './reducers/postByIDReducer'
+import getAllPostReducer from './reducers/postsReducer'
 
 export default configureStore({
     reducer:{
-        amount: amountReducer,
-        bonus: bonusReducer
+        postByID: postByIDReducer,
+        getAllPost: getAllPostReducer
     }
 })
