@@ -1,15 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-import getAllPostReducer from './reducers/postsReducer'
-
 import { postByIDApi } from '../api/postByIDSlice'
+import { postsApi } from '../api/postsSlice'
 
 
 export default configureStore({
     reducer:{
-        getAllPost: getAllPostReducer,
+        [postsApi.reducerPath]:postsApi.reducer,
         [postByIDApi.reducerPath]:postByIDApi.reducer
     },
     middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(postByIDApi.middleware)
+        getDefaultMiddleware().concat(postByIDApi.middleware).concat(postsApi.middleware)
 })

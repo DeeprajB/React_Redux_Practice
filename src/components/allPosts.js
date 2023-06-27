@@ -1,7 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-import { useSelector, useDispatch } from 'react-redux';
-import { getAllPost } from '../states/reducers/postsReducer';
+import { useGetAllPostQuery } from '../api/postsSlice';
 
 import { Box, Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
@@ -16,8 +15,12 @@ const ColorButton = styled(Button)(({ theme }) => ({
 }));
 
 function AllPosts() {
-  const allPost = useSelector(state => state.getAllPost);
-  const dispatch = useDispatch();
+  const { data, isLoading } = useGetAllPostQuery();
+  const [allPost,setAllPost] = useState([])
+
+  function handleClick(){
+    setAllPost(data);
+  }
 
   return (
     <>
@@ -25,17 +28,16 @@ function AllPosts() {
         width: '80vw',
         backgroundColor: '#E0B0FF',
       }}>
-        <p className="pt-5 text-2xl font-semibold justify-center">Search Post By ID</p>
+        <p className="pt-5 text-2xl font-semibold justify-center">Get All Post</p>
         <div className="flex m-5 space-x-4 items-center">
-          <ColorButton onClick={() => dispatch(getAllPost())} variant="contained">Get All Posts</ColorButton>
+          <ColorButton onClick={handleClick} variant="contained">Get All Posts</ColorButton>
         </div>
-        {console.log(allPost)}
-        {allPost.pending ? (
+        {isLoading ? (
           <h1 className='m-5'>Loading</h1>
         ) : (
           <div className="flex flex-col mb-5 p-1 text-center">
-            {Array.isArray(allPost.posts) ? (
-              allPost.posts.map((post, key) => (
+            {Array.isArray(allPost) ? (
+              allPost.map((post, key) => (
                 <div className='m-4 p-2 bg-cyan-400' key={key}>
                   <h2 className='text-xl font-semibold'>Post {post.id}</h2>
                   <h3>Title: {post.title}</h3>
